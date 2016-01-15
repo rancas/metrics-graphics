@@ -223,9 +223,7 @@ MG.data_graphic = function(args) {
 
   MG.call_hook('global.before_init', args);
 
-  new selected_chart.descriptor(args);
-
-  return args.data;
+  return new selected_chart.descriptor(args);
 };
 
 if (typeof jQuery !== 'undefined') {
@@ -3347,6 +3345,7 @@ MG.button_layout = function(target) {
   function lineChart (args) {
     this.init = function (args) {
       this.args = args;
+      this.svg = mg_get_svg_child_of(args.target);
 
       if (!args.data || args.data.length === 0) {
         args.internal_error = 'No data was supplied';
@@ -3449,7 +3448,7 @@ MG.button_layout = function(target) {
       return this;
     };
 
-    this.init(args);
+    return this.init(args);
   }
 
   MG.register('line', lineChart);
