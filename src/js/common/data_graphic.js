@@ -139,7 +139,5 @@ MG.data_graphic = function(args) {
 
   MG.call_hook('global.before_init', args);
 
-  new selected_chart.descriptor(args);
-
-  return args.data;
+  return new selected_chart.descriptor(args);
 };

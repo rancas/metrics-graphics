@@ -728,6 +728,7 @@
   function lineChart (args) {
     this.init = function (args) {
       this.args = args;
+      this.svg = mg_get_svg_child_of(args.target);
 
       if (!args.data || args.data.length === 0) {
         args.internal_error = 'No data was supplied';
@@ -830,7 +831,7 @@
       return this;
     };
 
-    this.init(args);
+    return this.init(args);
   }
 
   MG.register('line', lineChart);
